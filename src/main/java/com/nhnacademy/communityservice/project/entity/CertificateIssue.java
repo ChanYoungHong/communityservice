@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +24,9 @@ public class CertificateIssue {
     @Id
     private Integer certificateNumber;
 
-    @JoinColumn
-    private Integer residentserialNumber;
+    @ManyToOne
+    @JoinColumn(name = "resident_serial_number")
+    private Resident resident;
 
     @Column(name = "certificate_type_code")
     private String certificateCode;
